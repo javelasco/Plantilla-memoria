@@ -5,198 +5,237 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-Todos los capítulos deben comenzar con un breve párrafo introductorio que indique cuál es el contenido que se encontrará al leerlo.  La redacción sobre el contenido de la memoria debe hacerse en presente y todo lo referido al proyecto en pasado, siempre de modo impersonal.
+Esta sección presenta los requerimientos acordados con el cliente, las diferentes tecnologías a utilizar y las herramientas y recursos utilizados para realizar el trabajo.
 
-\section{Estilo y convenciones}
-\label{sec:ejemplo}
+\section{Requerimientos acordados con el cliente}
+\subsection{Requerimientos funcionales:}
+	\begin{itemize}
+		\item \textbf{Requerimientos de \textit{hardware}:}
+			\begin{enumerate}
+				\item El dispositivo deberá contar con un transformador de 110 / 220 VAC a 24 VAC a 2 A que será utilizado para alimentar el microcontrolador, sensores y periféricos de entrada y salida.
+				\item El dispositivo deberá contar con un rectificador y regulador de tensión a 5 VDC y 3.3 VDC.
+				\item El dispositivo deberá contar con una interface USB para su programación, actualización de código y depuración.
+				\item El dispositivo deberá contar con una pantalla LCD o similar de mínimo 2.4'' hasta 3.5''.
+				\item El dispositivo deberá contar con un \textit{joystick} o botoneras para su manipulación y configuración.
+				\item El dispositivo deberá contar con un \textit{Real Time Clock} (RTC), el mismo que deberá mantener la fecha y hora actual ante un corte de energía.
+				\item El dispositivo deberá contar con un sensor de temperatura que mida mínimo en el rango de -20 °C a 60 °C con una precisión de +/- 1 °C o inferior.
+				\item El dispositivo deberá contar con un sensor de humedad relativa de 0-100 \% con una precisión de +/- 3 \% o inferior.
+				\item El dispositivo deberá contar con un sensor de presión atmosférica que mida en el rango de 300 a 1100 hPa (0.3 - 1.1 bar) con una precisión absoluta de +/- 1 hPa o inferior.
+				\item El dispositivo deberá contar con cuatro (4) salidas independientes para las electroválvulas de 24 VAC y las mismas que deberán ser energizadas por el propio transformador del dispositivo.
+				\item El dispositivo deberá contar con una (1) salida independiente para la motobomba.
+				\item El dispositivo deberá soportar la tecnología Wi-Fi para envío y recepción de datos.	
+			\end{enumerate}
+			
+		\item \textbf{Requerimientos de \textit{firmware}:}
+			\begin{enumerate}	
+				\item Se deberá usar el idioma español o ingles.
+				\item La pantalla LCD debe mostrar el menú de opciones de configuración:
+					\begin{itemize}
+						\item Establecer fecha y hora
+						\item Programar secuencias de riego
+						\item Riego manual
+						\item Activar/Desactivar válvulas
+					\end{itemize}
+				\item Se debe permitir establecer la fecha y hora a través del \textit{joystick} o botoneras, el formato a utilizar será de 24 hrs.
+				\item Se debe permitir programar las secuencias de riego de cada electroválvula de manera independiente siguiendo las siguientes consideraciones:
+					\begin{itemize}
+						\item Configurar la hora de ejecución de riego en horas, minutos y segundos.
+						\item Configurar la duración de riego en horas, minutos y segundos.
+						\item Configurar la frecuencia expresado en horas y minutos. Por ejemplo, ejecutar el riego cada 2 horas.
+						\item Seleccionar los días de riego.
+						\item Poder borrar la configuración actual de la secuencia de riego.
+					\end{itemize}		
+				\item Se debe permitir encender cada electroválvula de manera manual independientemente de la programación que tenga configurada.
+				\item Se debe permitir activar y desactivar cada secuencia de riego de manera independiente.
+				\item La pantalla LCD debe mostrar un \textit{dashboard} con la siguiente información:
+					\begin{itemize}
+						\item La fecha y hora actual.
+						\item La programación actual de las secuencias de riego.
+						\item La presión atmosférica (altitud).
+						\item La temperatura y humedad ambiental.
+						\item El estado de los sensores de nivel de agua de los tanques.
+						\item El estado de las electroválvulas (encendidas/apagadas).
+					\end{itemize}
+			\end{enumerate}
+	\end{itemize}
 
-\subsection{Uso de mayúscula inicial para los título de secciones}
+\subsection{Requerimientos no funcionales:}
+	\begin{enumerate}
+		\item El tiempo de muestreo de los sensores de temperatura, humedad y presión atmosférica será de 5 segundos como máximo.
+		\item Se debe garantizar un soporte post venta de 5 años.
+	\end{enumerate}
 
-Si en el texto se hace alusión a diferentes partes del trabajo referirse a ellas como capítulo, sección o subsección según corresponda. Por ejemplo: ``En el capítulo \ref{Chapter1} se explica tal cosa'', o ``En la sección \ref{sec:ejemplo} se presenta lo que sea'', o ``En la subsección \ref{subsec:ejemplo} se discute otra cosa''.
-
-Cuando se quiere poner una lista tabulada, se hace así:
-
+\subsection{Historias de usuario}
+\label{sec:backlog}
+Para la ponderación de la dificultad, complejidad e incertidumbre de las historias de usuarios se usará la serie de Fibonacci y se clasificará en tres niveles: 
 \begin{itemize}
-	\item Este es el primer elemento de la lista.
-	\item Este es el segundo elemento de la lista.
+\item Baja (1)
+\item Media (3)
+\item Alta (5).
 \end{itemize}
 
-Notar el uso de las mayúsculas y el punto al final de cada elemento.
+El puntaje total será redondeado hacia arriba al valor mas cercano de la serie de Fibonacci. Por ejemplo, si la sumatoria da como resultado 11, el Story Point a considerar será 13.
 
-Si se desea poner una lista numerada el formato es este:
+\textbf{Historia 1:}
+''Como operario, quiero que el idioma del dispositivo sea español por un tema de facilidad de uso''.
+\begin{itemize}
+\item \textbf{Dificultad:} baja (1)
+\item \textbf{Complejidad:} baja (1)
+\item \textbf{Incertidunbre:} baja (1)
+\newline
+\newline
+\textbf{\textit{Story Point}: 3}
+\end{itemize}
 
-\begin{enumerate}
-	\item Este es el primer elemento de la lista.
-	\item Este es el segundo elemento de la lista.
-\end{enumerate}
+\textbf{Historia 2:}
+''Como agricultor, quiero poder visualizar el día, mes, año, hora, minuto, temperatura, humedad y presión atmosférica (altitud) en tamaño visible''.
+\begin{itemize}
+\item \textbf{Dificultad:} alta (5)
+\item \textbf{Complejidad:} media (3)
+\item \textbf{Incertidunbre:} media (3)
+\newline
+\newline
+\textbf{\textit{Story Point:} 13}
+\end{itemize}
 
-Notar el uso de las mayúsculas y el punto al final de cada elemento.
+\textbf{Historia 3:}
+''Como agricultor, quiero tener la posibilidad de programar los riegos una vez al día o varias veces al día, un vez a la semana o varios días a la semana''.
+\begin{itemize}
+\item \textbf{Dificultad:} alta (5)
+\item \textbf{Complejidad:} alta (5)
+\item \textbf{Incertidunbre:} media (3)
+\newline
+\newline
+\textbf{\textit{Story Point:} 13}
+\end{itemize}
 
-\subsection{Este es el título de una subsección}
-\label{subsec:ejemplo}
+\textbf{Historia 4:}
+''Como operario, quiero que en caso sea necesario usar una motobomba, esta última se active después de haberse iniciado la secuencia de riego''.
+\begin{itemize}
+\item \textbf{Dificultad:} media (3)
+\item \textbf{Complejidad:} baja (1)
+\item \textbf{Incertidunbre:} baja (1)
+\newline
+\newline
+\textbf{\textit{Story Point:} 5}
+\end{itemize}
 
-Se recomienda no utilizar \textbf{texto en negritas} en ningún párrafo, ni tampoco texto \underline{subrayado}. En cambio sí se debe utilizar \textit{texto en itálicas} para palabras en un idioma extranjero, al menos la primera vez que aparecen en el texto. En el caso de palabras que estamos inventando se deben utilizar ``comillas'', así como también para citas textuales. Por ejemplo, un \textit{digital filter} es una especie de ``selector'' que permite separar ciertos componentes armónicos en particular.
+\textbf{Historia 5:}
+''Como operario, quiero que cuando haya transcurrido el tiempo de riego, primero se apague la motobomba y después se cierren las electroválvulas para evitar daños en la motobomba''.
+\begin{itemize}
+\item \textbf{Dificultad:} media (3)
+\item \textbf{Complejidad:} baja (1)
+\item \textbf{Incertidunbre:} baja (1)
+\newline
+\newline
+\textbf{\textit{Story Point:} 5}
+\end{itemize}
 
-La escritura debe ser impersonal. Por ejemplo, no utilizar ``el diseño del firmware lo hice de acuerdo con tal principio'', sino ``el firmware fue diseñado utilizando tal principio''. 
+\textbf{Historia 6:}
+''Como agricultor, quiero que el dispositivo tenga la capacidad de controlar una motobomba para darle mayor presión al agua en caso sea necesario.
+\begin{itemize}
+\item \textbf{Dificultad:} baja (1)
+\item \textbf{Complejidad:} baja (1) 
+\item \textbf{Incertidunbre:} baja (1) 
+\newline
+\newline
+\textbf{\textit{Story Point:} 3}
+\end{itemize}
 
-El trabajo es algo que al momento de escribir la memoria se supone que ya está concluido, entonces todo lo que se refiera a hacer el trabajo se narra en tiempo pasado, porque es algo que ya ocurrió. Por ejemplo, "se diseñó el firmware empleando la técnica de test driven development".
+\textbf{Historia 7:}
+''Como agricultor, quisiera que el dispositivo incluya sus propias electroválvulas para evitarme el trabajo de buscar esas partes fuera y/o tener problemas de incompatibilidad.
+\begin{itemize}
+\item \textbf{Dificultad:} baja (1)
+\item \textbf{Complejidad:} baja (1)
+\item \textbf{Incertidunbre:} baja (1)
+\newline
+\newline
+\textbf{\textit{Story Point:} 3}
+\end{itemize}
 
-En cambio, la memoria es algo que está vivo cada vez que el lector la lee. Por eso transcurre siempre en tiempo presente, como por ejemplo:
+\textbf{Historia 8:}
+''Como operario, quisiera poder activar de forma voluntaria las electroválvulas e iniciar una secuencia de riego manual sin depender y desconfigurar la secuencia de riego programada.
+\begin{itemize}
+\item \textbf{Dificultad:} media (3)
+\item \textbf{Complejidad:} media (3)
+\item \textbf{Incertidunbre:} baja (1)
+\newline
+\newline
+\textbf{\textit{Story Point:} 8}
+\end{itemize}
 
-``En el presente capítulo se da una visión global sobre las distintas pruebas realizadas y los resultados obtenidos. Se explica el modo en que fueron llevados a cabo los test unitarios y las pruebas del sistema''.
+\textbf{Historia 9:}
+''Como agricultor, quisiera poder deshabilitar la secuencia de riego de manera temporal sin borrar la configuración ya establecida. Esto sería útil cuando se tenga que realizar algún mantenimiento en las cañerías o durante las temporadas de cosecha.
+\begin{itemize}
+\item \textbf{Dificultad:} baja (1) 
+\item \textbf{Complejidad:} media (3) 
+\item \textbf{Incertidunbre:} baja (1) 
+\newline
+\newline
+\textbf{\textit{Story Point:} 5}
+\end{itemize}
 
-Se recomienda no utilizar una sección de glosario sino colocar la descripción de las abreviaturas como parte del mismo cuerpo del texto. Por ejemplo, RTOS (\textit{Real Time Operating System}, Sistema Operativo de Tiempo Real) o en caso de considerarlo apropiado mediante notas a pie de página.
-
-Si se desea indicar alguna página web utilizar el siguiente formato de referencias bibliográficas, dónde las referencias se detallan en la sección de bibliografía de la memoria, utilizado el formato establecido por IEEE en \citep{IEEE:citation}. Por ejemplo, ``el presente trabajo se basa en la plataforma EDU-CIAA-NXP \citep{CIAA}, la cual...''.
-
-\subsection{Figuras} 
-
-Al insertar figuras en la memoria se deben considerar determinadas pautas. Para empezar, usar siempre tipografía claramente legible. Luego, tener claro que \textbf{es incorrecto} escribir por ejemplo esto: ``El diseño elegido es un cuadrado, como se ve en la siguiente figura:''
+\section{Tecnologías utilizadas}
+\subsection{ESP32:}
+Como cerebro del dispositivo se utilizó el \textit{System on a Chip} ESP32 del fabricante Espressif. El ESP32 emplea un microprocesador Tensilica Xtensa LX6 de doble núcleo.
 
 \begin{figure}[h]
-\centering
-\includegraphics[scale=.45]{./Figures/cuadradoAzul.png}
+	\centering
+	\includegraphics[width=0.4\textwidth]{SoC ESP32}
+	\caption{System on a Chip Espressif ESP32}
 \end{figure}
 
-La forma correcta de utilizar una figura es con referencias cruzadas, por ejemplo: ``Se eligió utilizar un cuadrado azul para el logo, como puede observarse en la figura \ref{fig:cuadradoAzul}''.
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[scale=.45]{./Figures/cuadradoAzul.png}
-	\caption{Ilustración del cuadrado azul que se eligió para el diseño del logo.}
-	\label{fig:cuadradoAzul}
-\end{figure}
-
-El texto de las figuras debe estar siempre en español, excepto que se decida reproducir una figura original tomada de alguna referencia. En ese caso la referencia de la cual se tomó la figura debe ser indicada en el epígrafe de la figura e incluida como una nota al pie, como se ilustra en la figura \ref{fig:palabraIngles}.
-
-\begin{figure}[htpb]
-	\centering
-	\includegraphics[scale=.3]{./Figures/word.jpeg}
-	\caption{Imagen tomada de la página oficial del procesador\protect\footnotemark.}
-	\label{fig:palabraIngles}
-\end{figure}
-
-\footnotetext{Imagen tomada de \url{https://goo.gl/images/i7C70w}}
-
-La figura y el epígrafe deben conformar una unidad cuyo significado principal pueda ser comprendido por el lector sin necesidad de leer el cuerpo central de la memoria. Para eso es necesario que el epígrafe sea todo lo detallado que corresponda y si en la figura se utilizan abreviaturas entonces aclarar su significado en el epígrafe o en la misma figura.
-
-
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[scale=.37]{./Figures/questionMark.png}
-	\caption{¿Por qué de pronto aparece esta figura?}
-	\label{fig:questionMark}
-\end{figure}
-
-Nunca colocar una figura en el documento antes de hacer la primera referencia a ella, como se ilustra con la figura \ref{fig:questionMark}, porque sino el lector no comprenderá por qué de pronto aparece la figura en el documento, lo que distraerá su atención.
-
-Otra posibilidad es utilizar el entorno \textit{subfigure} para incluir más de una figura, como se puede ver en la figura \ref{fig:three graphs}. Notar que se pueden referenciar también las figuras internas individualmente de esta manera: \ref{fig:1de3}, \ref{fig:2de3} y \ref{fig:3de3}.
- 
-\begin{figure}[!htpb]
-     \centering
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=.65\textwidth]{./Figures/questionMark}
-         \caption{Un caption.}
-         \label{fig:1de3}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=.65\textwidth]{./Figures/questionMark}
-         \caption{Otro.}
-         \label{fig:2de3}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=.65\textwidth]{./Figures/questionMark}
-         \caption{Y otro más.}
-         \label{fig:3de3}
-     \end{subfigure}
-        \caption{Tres gráficos simples}
-        \label{fig:three graphs}
-\end{figure}
-
-El código para generar las imágenes se encuentra disponible para su reutilización en el archivo \file{Chapter2.tex}.
-
-\subsection{Tablas}
-
-Para las tablas utilizar el mismo formato que para las figuras, sólo que el epígrafe se debe colocar arriba de la tabla, como se ilustra en la tabla \ref{tab:peces}. Observar que sólo algunas filas van con líneas visibles y notar el uso de las negritas para los encabezados.  La referencia se logra utilizando el comando \verb|\ref{<label>}| donde label debe estar definida dentro del entorno de la tabla.
-
-\begin{verbatim}
-\begin{table}[h]
-	\centering
-	\caption[caption corto]{caption largo más descriptivo}
-	\begin{tabular}{l c c}    
-		\toprule
-		\textbf{Especie}     & \textbf{Tamaño} & \textbf{Valor}\\
-		\midrule
-		Amphiprion Ocellaris & 10 cm           & \$ 6.000 \\		
-		Hepatus Blue Tang    & 15 cm           & \$ 7.000 \\
-		Zebrasoma Xanthurus  & 12 cm           & \$ 6.800 \\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:peces}
-\end{table}
-\end{verbatim}
+Entre las principales características del ESP32 son:
+\begin{enumerate}
+	\item Procesador:
+	\begin{enumerate}
+		\item CPU: microprocesador de 32-bit Xtensa LX6 de doble núcleo (o de un solo núcleo), operando a 160 o 240 MHz y rindiendo hasta 600 DMIPS.
+		\item Co-procesador de ultra baja energía (ULP).
+	\end{enumerate}
+	\item Memoria: 520 KiB SRAM.
+	\item Conectividad inalámbrica:
+	\begin{enumerate}
+		\item Wi-Fi: 802.11 b/g/n.
+		\item Bluetooth: v4.2 BR/EDR y BLE.
+	\end{enumerate}
+	\item Periféricos:
+	\begin{enumerate}
+		\item 12-bit SAR ADC de hasta 18 canales.
+		\item 2 × 8-bit DACs.
+		\item 10 × sensores de tacto (sensores capacitivos GPIOs).
+		\item 4 × SPI.
+		\item 2 × interfaces I²S.
+		\item 2 × interfaces I²C.
+		\item 3 × UART
+		\item Controlador host SD/SDIO/CE-ATA/MMC/eMMC
+		\item Controlador esclavo SDIO/SPI
+		\item Interfaz Ethernet MAC con DMA dedicado y soporte para el protocolo IEEE 1588 Precision Time Protocol.
+		\item Bus CAN 2.0.
+		\item Controlador remoto infrarrojo (TX/RX, hasta 8 canales).
+		\item Motor PWM.
+		\item LED PWM (hasta 16 canales).
+		\item Sensor de efecto Hall
+		\item Pre-amplificador analógico de ultra baja potencia
+	\end{enumerate}
+	\item Seguridad:
+	\begin{enumerate}
+		\item Soporta todas las características de seguridad estándar de IEEE 802.11, incluyendo WFA, WPA/WPA2 y WAPI.
+		\item Arranque seguro.
+		\item Cifrado flash.
+		\item 1024-bit OTP, hasta 768-bit para clientes.
+		\item Criptografía acelerada por hardware: AES, SHA-2, RSA, criptografía de curva elíptica (ECC), generador de números aleatorios (RNG).
+	\end{enumerate}	
+\end{enumerate}
 
 
-\begin{table}[h]
-	\centering
-	\caption[caption corto]{caption largo más descriptivo}
-	\begin{tabular}{l c c}    
-		\toprule
-		\textbf{Especie} 	 & \textbf{Tamaño} 		& \textbf{Valor}  \\
-		\midrule
-		Amphiprion Ocellaris & 10 cm 				& \$ 6.000 \\		
-		Hepatus Blue Tang	 & 15 cm				& \$ 7.000 \\
-		Zebrasoma Xanthurus	 & 12 cm				& \$ 6.800 \\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:peces}
-\end{table}
 
-En cada capítulo se debe reiniciar el número de conteo de las figuras y las tablas, por ejemplo, figura 2.1 o tabla 2.1, pero no se debe reiniciar el conteo en cada sección. Por suerte la plantilla se encarga de esto por nosotros.
+\subsection{Pantalla TFT de 3.5 pulgadas:}
 
-\subsection{Ecuaciones}
-\label{sec:Ecuaciones}
+\subsection{Joystick:}
 
-Al insertar ecuaciones en la memoria dentro de un entorno \textit{equation}, éstas se numeran en forma automática  y se pueden referir al igual que como se hace con las figuras y tablas, por ejemplo ver la ecuación \ref{eq:metric}.
+\subsection{Sensor BME280:}
 
-\begin{equation}
-	\label{eq:metric}
-	ds^2 = c^2 dt^2 \left( \frac{d\sigma^2}{1-k\sigma^2} + \sigma^2\left[ d\theta^2 + \sin^2\theta d\phi^2 \right] \right)
-\end{equation}
-                                                        
-Es importante tener presente que si bien las ecuaciones pueden ser referidas por su número, también es correcto utilizar los dos puntos, como por ejemplo ``la expresión matemática que describe este comportamiento es la siguiente:''
+\subsection{Chip FT232RL:}
 
-\begin{equation}
-	\label{eq:schrodinger}
-	\frac{\hbar^2}{2m}\nabla^2\Psi + V(\mathbf{r})\Psi = -i\hbar \frac{\partial\Psi}{\partial t}
-\end{equation}
+\section{Herramientas y recursos de terceros}
 
-Para generar la ecuación \ref{eq:metric} se utilizó el siguiente código:
-
-\begin{verbatim}
-\begin{equation}
-	\label{eq:metric}
-	ds^2 = c^2 dt^2 \left( \frac{d\sigma^2}{1-k\sigma^2} + 
-	\sigma^2\left[ d\theta^2 + 
-	\sin^2\theta d\phi^2 \right] \right)
-\end{equation}
-\end{verbatim}
-
-Y para la ecuación \ref{eq:schrodinger}:
-
-\begin{verbatim}
-\begin{equation}
-	\label{eq:schrodinger}
-	\frac{\hbar^2}{2m}\nabla^2\Psi + V(\mathbf{r})\Psi = 
-	-i\hbar \frac{\partial\Psi}{\partial t}
-\end{equation}
-
-\end{verbatim}
